@@ -471,10 +471,10 @@ function Blowout-Networking ()
 
     Get-VDSwitch -name $userSelectedVDS | Get-VDPortgroup -Name Student** | Remove-VDPortGroup -Confirm:$false
 }
-#resets student passwords to M@rines1M@rines1
+#resets student passwords to PASSWORDPASSWORD
 function Reset-Passwords
 {
-    $pass = ConvertTo-SecureString -AsPlainText "M@rines1M@rines1" -Force
+    $pass = ConvertTo-SecureString -AsPlainText "PASSWORDPASSWORD" -Force
     $users = Invoke-Command -ComputerName MTCDC01 -Credential $userCreds -ScriptBlock {get-aduser -filter 'Name -like "Student*"'}
 
     foreach ($u in $users)
@@ -1104,7 +1104,7 @@ function ProvisonNetwork ()
         Create-PowerShellScript -NameOfScript 'Elevate-Process' -ScriptConent $elevateprocessscript
 
         # Creds for GNS3 Box
-        $secpassword = ConvertTo-SecureString -AsPlainText 'P@ssword' -Force
+        $secpassword = ConvertTo-SecureString -AsPlainText 'PASSWORDFORGNS3BOX' -Force
         $mycreds = New-Object System.Management.Automation.PSCredential ('Administrator', $secpassword)
 
          # Setting path variables to scripts
@@ -2143,7 +2143,7 @@ function Start-DCDSC () {
         $count ++
         $jobCred = $Global:userCreds 
         $vmwarecred = $Global:userCreds 
-        $localPassword = ConvertTo-SecureString -String 'M@rines1M@rines1' -AsPlainText -Force
+        $localPassword = ConvertTo-SecureString -String 'PASSWORDFORDOMAINCONTROLLER' -AsPlainText -Force
         $creds = [pscredential]::new('Administrator', $localPassword)
         Start-Job -Name "DC$count" -Credential $jobCred -ArgumentList $allFunctionDefs, $nodeNames, $domainController, $creds, $vmwarecred -ScriptBlock {
             Param( 
@@ -2159,7 +2159,8 @@ function Start-DCDSC () {
             # Connect to VCSA via job session Pass global cred parameter here
             Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Confirm:$false | Out-Null
             Set-PowerCLIConfiguration -Scope User -ParticipateInCEIP:$false -Confirm:$false | Out-Null
-            Connect-VIServer 10.10.0.20 -Credential $vmwarecred
+            ## Need to pass $VCSA here to job as argument
+            Connect-VIServer $SOMEVCSAVARIABLENEEDSTOGOHERE -Credential $vmwarecred
             # Recreate functions in job session
             .([ScriptBlock]::Create($allFunctionDefs))
             # import nodenames hashtable
@@ -2291,7 +2292,7 @@ function New-DCPSD1 (){
     }
 }
 Configuration DomainBuild {
-    $buildPassword = ConvertTo-SecureString -String 'M@rines1' -AsPlainText -Force
+    $buildPassword = ConvertTo-SecureString -String 'PASSWORD FOR DOMAIN CONTROLLER' -AsPlainText -Force
     $buildcred = [pscredential]::new('Student', $buildPassword)
     
     #Import-DscResource -ModuleName xActiveDirectory 
