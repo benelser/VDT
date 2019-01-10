@@ -10,7 +10,7 @@ This is tool is a work in progress.
 
 ## Current Deployment Pipeline 
 
-The tool leverages [vmware vApps](https://pubs.vmware.com/vca/index.jsp?topic=%2Fcom.vmware.vca.od.ug.doc%2FGUID-3F4BF45F-89CE-4478-B6D5-5BD7EE749C08.html) as master containers for training environments. I like to think of it as a poor-man’s [Virtual desktop infrastructure (VDI)](https://searchvirtualdesktop.techtarget.com/definition/virtual-desktop-infrastructure-VDI) of sorts. This is approach adopts the build once, deploy many philosophy.
+The tool leverages [vmware vApps](https://pubs.vmware.com/vca/index.jsp?topic=%2Fcom.vmware.vca.od.ug.doc%2FGUID-3F4BF45F-89CE-4478-B6D5-5BD7EE749C08.html) as master containers for training environments. I like to think of it as a poor-man’s [Virtual desktop infrastructure (VDI)](https://searchvirtualdesktop.techtarget.com/definition/virtual-desktop-infrastructure-VDI) of sorts. This approach adopts the build once, deploy many philosophy.
 
 ## How to Engage, Contribute and Provide Feedback
 Some of the best ways to contribute are to try things out, file bugs, pull request and join in design conversations.
