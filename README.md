@@ -4,7 +4,7 @@ This project was birthed out of necessity, while its initial contributors sought
 
 ## Tool Dependencies
 
-This is tool is a work in progress.
+This tool is a work in progress.
 1. Any OS able to run [PowerShell](https://github.com/PowerShell/PowerShell) and [PowerCLI]( https://www.powershellgallery.com/packages/VMware.PowerCLI/10.1.1.8827524) libraries.
 2. [vSphere](https://www.vmware.com/products/vsphere.html) and [vCenter Server Appliance](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcsa.doc/GUID-223C2821-BD98-4C7A-936B-7DBE96291BA4.html)
 
